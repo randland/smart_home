@@ -33,5 +33,9 @@ module SmartHome
     config.active_record.raise_in_transactional_callbacks = true
 
     config.sass.preferred_syntax = :sass
+
+    %W(lib app/services).each do |dir|
+      config.autoload_paths << Rails.root.join(dir)
+    end
   end
 end

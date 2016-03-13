@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'httparty'
+gem 'hashie'
 
 group :development, :test do
   gem 'pry-rails'
@@ -40,6 +41,6 @@ group :development do
   gem 'rack-webconsole-pry', :require => 'rack-webconsole'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
 end
 
