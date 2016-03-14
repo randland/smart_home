@@ -3,8 +3,8 @@ module Hue
     class << self
       attr_accessor :ip, :username
 
-      %W(delete get head options post push).each do |verb|
-        define_method(verb) do |path, params={}|
+      %W(delete get head options post put).each do |verb|
+        define_method(verb) do |path, **params|
           http_client.send(verb, build_uri(path), build_query(params)).parsed_response
         end
       end

@@ -1,8 +1,12 @@
 module Hue
-  class BridgeClient
+  class BridgeClient < BaseClient
     class << self
       def username
         @username ||= cached_username || request_username
+      end
+
+      def full_status
+        get
       end
 
       private
@@ -15,7 +19,7 @@ module Hue
         fails = 0
 
         begin
-          result = client.post('/', devicetype: 'SmartHome').first['success']
+          result = post(devicetype: 'SmartHome').first['success']
 
           unless result
             puts 'Please press the link button on the Hue hub'
@@ -28,10 +32,6 @@ module Hue
         raise 'Unable to connect to the Hue bridge' unless result
 
         result['username']
-      end
-
-      def client
-        Hue::APIClient
       end
     end
   end
